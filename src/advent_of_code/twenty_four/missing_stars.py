@@ -1,6 +1,5 @@
 """Missing Stars Solution."""
 
-import bisect
 
 def missing_stars_solution(input_text: str) -> int:
     """Missing Stars.
