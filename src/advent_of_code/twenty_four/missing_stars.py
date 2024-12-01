@@ -62,4 +62,12 @@ def similarity_score(input_text: str) -> int:
 
     Return the sum of the first list.
     """
-    return 0
+    answer = 0
+
+    A, B = extract_lists(input_text)
+
+    freq = {i:B.count(i) for i in set(A)}
+    for val in A:
+        answer += (val * freq[val])
+
+    return answer
