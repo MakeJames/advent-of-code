@@ -1,5 +1,7 @@
 """Missing Stars Solution."""
 
+import bisect
+
 def missing_stars_solution(input_text: str) -> int:
     """Missing Stars.
 
@@ -10,8 +12,9 @@ def missing_stars_solution(input_text: str) -> int:
     The string must be split,
     converted to integers,
     each pair of numbers assigned to list A or B,
-    sorted,
-    difference calculated against each pair of numbers.
+    sorted.
+
+    Returns the difference between the two lists
     """
     lines = input_text.split("\n")
     A = []
@@ -24,6 +27,7 @@ def missing_stars_solution(input_text: str) -> int:
             continue
         if values[1] == "":
             continue
+
         A.append(int(values[0]))
         B.append(int(values[1]))
 
