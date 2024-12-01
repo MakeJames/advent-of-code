@@ -13,7 +13,7 @@ license = {text = "MIT"}
 
 
 [tool.pdm]
-distribution = false
+distribution = true
 
 [tool.pdm.dev-dependencies]
 dev = [
