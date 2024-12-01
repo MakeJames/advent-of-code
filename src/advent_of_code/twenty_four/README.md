@@ -8,4 +8,4 @@
 
 [Problem](https://adventofcode.com/2024/day/1)
 
-[Solution](./01-missing-stars.py)
+[Solution](./missing_stars.py)

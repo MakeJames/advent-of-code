@@ -4,4 +4,4 @@ Advent of code submissions.
 
 ## Contents
 
-- [2024](./src/advent-of-code/2024/README.md)
+- [2024](./src/advent_of_code/twenty_four/README.md)
