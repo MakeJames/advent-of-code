@@ -4,16 +4,15 @@ import pytest
 
 from advent_of_code.twenty_four.missing_stars import missing_stars_solution
 
-
-def test_when_solution_formatted_string_then_pass() -> None:
+@pytest.mark.parametrize(
+    "test_input,expected",
+    [
+        ("3   4\n4   3\n2   5\n1   3\n3   9\n3   3\n", 11),
+        ("5   2\n2   1\n2   3\n3   8\n1   9\n-2   3\n", 15),
+        ("100   20\n40   -2\n304   700\n20   49\n40   30009\n20   3\n", 30373),
+    ],
+)
+def test_when_solution_formatted_string_then_pass(test_input, expected) -> None:
     """R-BICEP: Right."""
-    input_text = """3   4
-4   3
-2   5
-1   3
-3   9
-3   3
-"""
-    result = missing_stars_solution(input_text)
-    assert result == 11
-    assert 0
+    result = missing_stars_solution(test_input)
+    assert result == expected

@@ -13,4 +13,26 @@ def missing_stars_solution(input_text: str) -> int:
     sorted,
     difference calculated against each pair of numbers.
     """
-    return 0
+    lines = input_text.split("\n")
+    A = []
+    B = []
+    answer = 0
+
+    for line in lines:
+        values = line.split("   ")
+        if values[0] == "":
+            continue
+        if values[1] == "":
+            continue
+        A.append(int(values[0]))
+        B.append(int(values[1]))
+
+    assert len(A) == len(B)
+
+    A.sort()
+    B.sort()
+
+    for a, b in zip(A, B):
+        answer += max(a - b, b -a)
+
+    return answer
