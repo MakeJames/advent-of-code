@@ -2,6 +2,8 @@
 
 import pytest
 
+from pathlib import Path
+
 from advent_of_code.twenty_four.missing_stars import missing_stars_solution
 
 @pytest.mark.parametrize(
@@ -15,4 +17,33 @@ from advent_of_code.twenty_four.missing_stars import missing_stars_solution
 def test_when_solution_formatted_string_then_pass(test_input, expected) -> None:
     """R-BICEP: Right."""
     result = missing_stars_solution(test_input)
+    assert result == expected
+
+
+@pytest.mark.parametrize(
+    "test_input,expected",
+    [
+        (
+            "missing_stars_1000_20_667121229184848866069.txt",
+            667121229184848866069,
+        ),
+        (
+            "missing_stars_25_4_18908.txt",
+            18908,
+        ),
+        (
+            "missing_stars_500000_2_65589.txt",
+            65589,
+        ),
+        (
+            "missing_stars_50000_20_8770726923331238161099.txt",
+            8770726923331238161099,
+        ),
+    ]
+)
+def test_large_files_and_numbers(test_input: str, expected: int, benchmark) -> None:
+    """R-BICEP: Performance."""
+    test_file = Path(__file__).parent.joinpath("test_data", test_input)
+    result = benchmark(missing_stars_solution, test_file.read_text())
+
     assert result == expected
