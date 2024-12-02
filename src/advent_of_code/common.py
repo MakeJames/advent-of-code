@@ -8,6 +8,9 @@ from advent_of_code.twenty_four.missing_stars import missing_stars_solution
 
 
 def random_with_N_digits(n: int) -> int:
+    if n < 0:
+        return 0
+
     start = 10**(n-1)
     end = (10**n)-1
     return randint(start, end)
