@@ -66,8 +66,12 @@ def similarity_score(input_text: str) -> int:
 
     A, B = extract_lists(input_text)
 
-    freq = {i:B.count(i) for i in set(A)}
-    for val in A:
-        answer += (val * freq[val])
+    matched_values = set(A).intersection(B)
+
+    if len(matched_values) == 0:
+        return 0
+
+    for i in matched_values:
+        answer += (i * A.count(i) * B.count(i))
 
     return answer

@@ -79,11 +79,10 @@ def test_large_files_and_numbers(test_input: str, expected: int, benchmark) -> N
             "missing_stars_500000_2_65589.txt",
             151261294761,
         ),
-        # Too Slow - function needs performance improvements
-        # (
-        #     "missing_stars_50000_20_8770726923331238161099.txt",
-        #     0,
-        # ),
+        (
+            "missing_stars_50000_20_8770726923331238161099.txt",
+            0,
+        ),
     ]
 )
 def test_large_files_and_numbers_for_similarity(test_input: str, expected: int, benchmark) -> None:
