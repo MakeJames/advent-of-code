@@ -13,7 +13,7 @@ def safe_reports(input_text: str) -> int:
     are either all increasing or all decreasing.
     Any two adjacent levels differ by at least one and at most three.
 
-    Returns the number of safe reports
+    Returns the number of safe reports.
     """
     answer = 0
 
