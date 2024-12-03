@@ -1,7 +1,15 @@
 """The solutions for day 2."""
 
+from typing import Tuple
 
-def safe_reports(input_text: str) -> int:
+def is_safe(row):
+    inc = [row[i + 1] - row[i] for i in range(len(row) - 1)]
+    if set(inc) <= {1, 2, 3} or set(inc) <= {-1, -2, -3}:
+        return True
+    return False
+
+
+def safe_reports(input_text: str, dampener: bool=False) -> int:
     """Returns the number of 'reports' that are safe.
 
     Input provided contains 'reports',
@@ -15,41 +23,9 @@ def safe_reports(input_text: str) -> int:
 
     Returns the number of safe reports.
     """
-    answer = 0
 
-    reports = input_text.split("\n")
+    data = [[int(y) for y in x.split(' ')] for x in input_text.rstrip().split('\n')]
 
-    for report in reports:
-
-        if report == "":
-            continue
-
-        levels = [int(val) for val in report.split(" ")]
-        safe = True
-
-        direction = ""
-
-        for level, next_level in zip(levels, levels[1:]):
-
-            if level >= next_level:
-                if direction == "ascending":
-                    safe = False
-                    break
-                direction = "descending"
-
-            if level <= next_level:
-                if direction == "descending":
-                    safe = False
-                    break
-                direction = "ascending"
-
-            if max((level - next_level), (next_level - level)) > 3:
-                safe = False
-                break
-
-        if safe is True:
-            answer += 1
-
-    return answer
-
-    return 0
+    if dampener:
+        return sum([any([is_safe(row[:i] + row[i + 1:]) for i in range(len(row))]) for row in data])
+    return sum([is_safe(row) for row in data])
